@@ -15,4 +15,11 @@ You must configure authentication with a Twitter account.Got to twitter develope
 
 ![screenshot from 2017-12-01 00-27-04](https://user-images.githubusercontent.com/3243281/33605252-f4edc2b4-d9c9-11e7-817c-4d973c27cc6c.png)
 
-Then add your keys.
+Then add your keys. as follows
+
+val apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxx"
+val apiSecret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+val accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+val accessTokenSecret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+configureTwitterCredentials(apiKey, apiSecret, accessToken, accessTokenSecret)
+
