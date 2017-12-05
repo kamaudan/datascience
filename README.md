@@ -6,14 +6,7 @@ import org.apache.spark.streaming.twitter._
 
 it will output that twitter is not a member of org.apache.spark.streaming, this is because the logger that was used by version 1.0 was removed, to solve this I used apache bahir as below on zeppelin paragraph.
 
-%dep
-z.reset()
-z.load("org.apache.bahir:spark-streaming-twitter_2.11:2.0.0")
-z.load("org.twitter4j:twitter4j-core:3.0.3")
-z.load("org.twitter4j:twitter4j-media-support:3.0.3")
-z.load("org.twitter4j:twitter4j-async:3.0.3")
-z.load("org.twitter4j:twitter4j-examples:3.0.3")
-z.load("org.twitter4j:twitter4j-stream:3.0.3")
+![screenshot from 2017-12-01 00-26-53](https://user-images.githubusercontent.com/3243281/33605032-1bfd96a0-d9c9-11e7-96a1-8c2b56a5ab3c.png)
 
 
 
