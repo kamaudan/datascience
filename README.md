@@ -13,3 +13,6 @@ it will output that twitter is not a member of org.apache.spark.streaming, this 
 
 You must configure authentication with a Twitter account.Got to twitter developer and get your api key, and other listed below. After you get API keys, you should fill out credential related values(apiKey, apiSecret, accessToken, accessTokenSecret) with your API keys on following script.
 
+![screenshot from 2017-12-01 00-27-04](https://user-images.githubusercontent.com/3243281/33605252-f4edc2b4-d9c9-11e7-817c-4d973c27cc6c.png)
+
+Then add your keys.
