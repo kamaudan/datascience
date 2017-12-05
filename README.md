@@ -32,7 +32,7 @@ More screenshots to help you finish with the rest of the tasks.
 ![screenshot from 2017-12-01 00-27-15](https://user-images.githubusercontent.com/3243281/33605259-fd91ccee-d9c9-11e7-89cd-b70aa215d3fa.png)
 ![screenshot from 2017-12-01 00-27-16](https://user-images.githubusercontent.com/3243281/33605269-04fa3b7e-d9ca-11e7-9f42-d3c9b4ee4ceb.png)
 ![screenshot from 2017-12-01 00-27-23](https://user-images.githubusercontent.com/3243281/33605273-094aff92-d9ca-11e7-8997-e902f96e421c.png)
-![screenshot from 2017-12-01 00-27-26](https://user-images.githubusercontent.com/3243281/33605275-0d533bf4-d9ca-11e7-9a39-1439b9c07dbc.png)
+
 ![screenshot from 2017-12-01 00-27-36](https://user-images.githubusercontent.com/3243281/33605276-10f772e8-d9ca-11e7-943c-9c349f55cde9.png)
 
 
