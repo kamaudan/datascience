@@ -1,0 +1,315 @@
+{
+  "paragraphs": [
+    {
+      "text": "%dep\nz.reset()\nz.load(\"org.apache.bahir:spark-streaming-twitter_2.11:2.0.0\")\nz.load(\"org.twitter4j:twitter4j-core:3.0.3\")\nz.load(\"org.twitter4j:twitter4j-media-support:3.0.3\")\nz.load(\"org.twitter4j:twitter4j-async:3.0.3\")\nz.load(\"org.twitter4j:twitter4j-examples:3.0.3\")\nz.load(\"org.twitter4j:twitter4j-stream:3.0.3\")\n",
+      "dateUpdated": "Dec 5, 2017 1:36:10 PM",
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@5b7937f7\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1512470170500_-1887796948",
+      "id": "20171130-215123_271246287",
+      "dateCreated": "Dec 5, 2017 1:36:10 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import org.apache.spark.streaming._\nimport org.apache.spark.streaming.twitter._\nimport org.apache.spark.storage.StorageLevel\nimport scala.io.Source\nimport scala.collection.mutable.HashMap\nimport java.io.File\nimport org.apache.log4j.Logger\nimport org.apache.log4j.Level\nimport sys.process.stringSeqToProcess",
+      "dateUpdated": "Dec 5, 2017 1:36:10 PM",
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512470170502_-1887027450",
+      "id": "20171130-230208_2014142477",
+      "dateCreated": "Dec 5, 2017 1:36:10 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def configureTwitterCredentials(apiKey: String, apiSecret: String, accessToken: String, accessTokenSecret: String) {\n  val configs \u003d new HashMap[String, String] ++\u003d Seq(\n    \"apiKey\" -\u003e apiKey, \"apiSecret\" -\u003e apiSecret, \"accessToken\" -\u003e accessToken, \"accessTokenSecret\" -\u003e accessTokenSecret)\n  println(\"Configuring Twitter OAuth\")\n  configs.foreach{ case(key, value) \u003d\u003e\n    if (value.trim.isEmpty) {\n      throw new Exception(\"Error setting authentication - value for \" + key + \" not set\")\n    }\n    val fullKey \u003d \"twitter4j.oauth.\" + key.replace(\"api\", \"consumer\")\n    System.setProperty(fullKey, value.trim)\n    println(\"\\tProperty \" + fullKey + \" set as [\" + value.trim + \"]\")\n  }\n  println()\n}",
+      "dateUpdated": "Dec 5, 2017 1:36:10 PM",
+      "config": {
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512470170503_-1887412199",
+      "id": "20171130-231340_1706547393",
+      "dateCreated": "Dec 5, 2017 1:36:10 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val apiKey \u003d \"wEN5FJRlE6Wtn6D9oUTzEnfWz\"\nval apiSecret \u003d \"ZmDgL2yVXTPPWzWh1Ks7MkvxlWjzlwz7z99gfxzDoGo43jcz4h\"\n\nval accessToken \u003d \"41827321-MvT1XygqolhNxW6WEMDcnCuMzabPpYOD8YnIMNc2H\"\nval accessTokenSecret \u003d \"QBfPX55ZQkPESU54SjIYHSFBVK8iqTF6h5rZfd6wM8yM4\"\nconfigureTwitterCredentials(apiKey, apiSecret, accessToken, accessTokenSecret)",
+      "dateUpdated": "Dec 5, 2017 1:36:10 PM",
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\napiKey: String \u003d wEN5FJRlE6Wtn6D9oUTzEnfWz\n\napiSecret: String \u003d ZmDgL2yVXTPPWzWh1Ks7MkvxlWjzlwz7z99gfxzDoGo43jcz4h\n\naccessToken: String \u003d 41827321-MvT1XygqolhNxW6WEMDcnCuMzabPpYOD8YnIMNc2H\n\naccessTokenSecret: String \u003d QBfPX55ZQkPESU54SjIYHSFBVK8iqTF6h5rZfd6wM8yM4\nConfiguring Twitter OAuth\n\tProperty twitter4j.oauth.consumerKey set as [wEN5FJRlE6Wtn6D9oUTzEnfWz]\n\tProperty twitter4j.oauth.accessToken set as [41827321-MvT1XygqolhNxW6WEMDcnCuMzabPpYOD8YnIMNc2H]\n\tProperty twitter4j.oauth.consumerSecret set as [ZmDgL2yVXTPPWzWh1Ks7MkvxlWjzlwz7z99gfxzDoGo43jcz4h]\n\tProperty twitter4j.oauth.accessTokenSecret set as [QBfPX55ZQkPESU54SjIYHSFBVK8iqTF6h5rZfd6wM8yM4]\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1512470170504_-1889335944",
+      "id": "20171130-231448_2097722671",
+      "dateCreated": "Dec 5, 2017 1:36:10 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import org.apache.spark.streaming.twitter._\nval ssc \u003d new StreamingContext(sc, Seconds(2))\nval tweets \u003d TwitterUtils.createStream(ssc, None)\nval twt \u003d tweets.window(Seconds(60))",
+      "dateUpdated": "Dec 5, 2017 1:36:10 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nimport org.apache.spark.streaming.twitter._\n\nssc: org.apache.spark.streaming.StreamingContext \u003d org.apache.spark.streaming.StreamingContext@412ebcb8\n\ntweets: org.apache.spark.streaming.dstream.ReceiverInputDStream[twitter4j.Status] \u003d org.apache.spark.streaming.twitter.TwitterInputDStream@24e38ee0\n\ntwt: org.apache.spark.streaming.dstream.DStream[twitter4j.Status] \u003d org.apache.spark.streaming.dstream.WindowedDStream@68d0496a\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1512470170504_-1889335944",
+      "id": "20171130-232112_749265010",
+      "dateCreated": "Dec 5, 2017 1:36:10 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "case class Tweet(createdAt:Long, text:String)\ntwt.map(status\u003d\u003e\n  Tweet(status.getCreatedAt().getTime()/1000, status.getText())\n).foreachRDD(rdd\u003d\u003e\nrdd.toDF().registerTempTable(\"tweets\")\n)\n\ntwt.print\n\nssc.start()",
+      "dateUpdated": "Dec 5, 2017 1:36:10 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\ndefined class Tweet\n\nwarning: there was one deprecation warning; re-run with -deprecation for details\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1512470170505_-1889720693",
+      "id": "20171130-232208_266214952",
+      "dateCreated": "Dec 5, 2017 1:36:10 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def sentiment(s:String) : String \u003d {\n    val positive \u003d Array(\"like\", \"love\", \"good\", \"great\", \"happy\", \"cool\", \"the\", \"one\", \"that\")\n    val negative \u003d Array(\"hate\", \"bad\", \"stupid\", \"is\")\n\n    var st \u003d 0;\n\n    val words \u003d s.split(\" \")    \n    positive.foreach(p \u003d\u003e\n        words.foreach(w \u003d\u003e\n            if(p\u003d\u003dw) st \u003d st+1\n        )\n    )\n\n    negative.foreach(p\u003d\u003e\n        words.foreach(w\u003d\u003e\n            if(p\u003d\u003dw) st \u003d st-1\n        )\n    )\n    if(st\u003e0)\n        \"positivie\"\n    else if(st\u003c0)\n        \"negative\"\n    else\n        \"neutral\"\n}\n\nsqlc.udf.register(\"sentiment\", sentiment _)\n",
+      "dateUpdated": "Dec 5, 2017 1:36:10 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nsentiment: (s: String)String\n\nres9: org.apache.spark.sql.expressions.UserDefinedFunction \u003d UserDefinedFunction(\u003cfunction1\u003e,StringType,Some(List(StringType)))\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1512470170506_-1888566446",
+      "id": "20171130-233118_428790461",
+      "dateCreated": "Dec 5, 2017 1:36:10 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect  sentiment(text) as sentiment, count(1) from tweets group by sentiment(text)",
+      "dateUpdated": "Dec 5, 2017 1:36:10 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300.0,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "sentiment\tcount(1)\nneutral\t1792\nnegative\t58\npositivie\t246\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1512470170507_-1888951195",
+      "id": "20171130-233954_670884280",
+      "dateCreated": "Dec 5, 2017 1:36:10 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\n",
+      "dateUpdated": "Dec 5, 2017 1:36:10 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql"
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1512470170507_-1888951195",
+      "id": "20171130-234144_1368956489",
+      "dateCreated": "Dec 5, 2017 1:36:10 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Tweets Analytics",
+  "id": "2D3BFSXCC",
+  "angularObjects": {
+    "2CZAVGB9E:shared_process": [],
+    "2D16XM79F:shared_process": [],
+    "2D1VBV1ZZ:shared_process": [],
+    "2D1AX49KW:shared_process": [],
+    "2D2EMZGT1:shared_process": [],
+    "2D2Q1T24Y:shared_process": [],
+    "2D2Y53DDP:shared_process": [],
+    "2D33H88W6:shared_process": [],
+    "2CZUC9N4K:shared_process": [],
+    "2D1U2QYYD:shared_process": [],
+    "2D1D41HB7:shared_process": [],
+    "2D18Q3EY4:shared_process": [],
+    "2D3631HCA:shared_process": [],
+    "2CYMHU8QX:shared_process": [],
+    "2CZZCME52:shared_process": [],
+    "2CYFUWYPA:shared_process": [],
+    "2D34SJKN2:shared_process": [],
+    "2D2AM5GDT:shared_process": [],
+    "2D19KB3PB:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
