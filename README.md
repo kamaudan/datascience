@@ -1,4 +1,4 @@
-# datascience
+# Twitter Streaming
 This is a twitter streaming application using Apache spark 2.0, on Apache Zeppelin notebook.
 
 Note the twitter streaming examples using apache spark available online were for version 1.0.... They don't work with version 2.0,  if you try  this:
@@ -18,8 +18,12 @@ You must configure authentication with a Twitter account.Got to twitter develope
 Then add your keys. as follows
 
 val apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxx"
+
 val apiSecret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
 val accessToken = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
 val accessTokenSecret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
 configureTwitterCredentials(apiKey, apiSecret, accessToken, accessTokenSecret)
 
