@@ -28,6 +28,7 @@ val accessTokenSecret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 configureTwitterCredentials(apiKey, apiSecret, accessToken, accessTokenSecret)
 
 More screenshots to help you finish with the rest of the tasks.
+
 ![screenshot from 2017-12-01 00-27-05](https://user-images.githubusercontent.com/3243281/33605255-f8d107ce-d9c9-11e7-9244-c6fdd6a4509e.png)
 ![screenshot from 2017-12-01 00-27-15](https://user-images.githubusercontent.com/3243281/33605259-fd91ccee-d9c9-11e7-89cd-b70aa215d3fa.png)
 
